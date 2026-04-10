@@ -2,13 +2,13 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# 安装 pnpm
-RUN npm install -g pnpm
+# 安装 pnpm 和 nest cli
+RUN npm install -g pnpm @nestjs/cli
 
 # 复制 package 文件
 COPY package.json pnpm-lock.yaml ./
 
-# 复制 patches 文件夹（如果需要）
+# 复制 patches 文件夹
 COPY patches ./patches/
 
 # 安装依赖
