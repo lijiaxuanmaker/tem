@@ -9,11 +9,11 @@ RUN npm install -g pnpm
 # 安装 nest cli
 RUN npm install -g @nestjs/cli
 
-# 复制 package 文件
-COPY package.json pnpm-lock.yaml ./
+# 只复制 package.json
+COPY package.json ./
 
-# 安装依赖（跳过 patches 检查，因为 server 不需要）
-RUN pnpm install --ignore-patches
+# 安装依赖（不依赖 lock 文件）
+RUN pnpm install
 
 # 复制源代码
 COPY . .
