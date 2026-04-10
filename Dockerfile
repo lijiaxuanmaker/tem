@@ -8,6 +8,9 @@ RUN npm install -g pnpm
 # 复制 package 文件
 COPY package.json pnpm-lock.yaml ./
 
+# 复制 patches 文件夹（如果需要）
+COPY patches ./patches/
+
 # 安装依赖
 RUN pnpm install
 
